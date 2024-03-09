@@ -1,3 +1,7 @@
+#!/bin/bash
+set -e
+set -x
+
 # remote cleanup
 ENVOY_HOST=${ENVOY_HOST:=192.168.222.10}
 FORTIO_HOST=${FORTIO_HOST:=192.168.222.11}
@@ -7,7 +11,7 @@ echo "Kill envoy on $ENVOY_HOST"
 #ssh -i $SSH_KEY hejiexu@$ENVOY_HOST 'bash -c "cd /home/hejiexu/cpu-affinity-benchmark; kill -9 \`cat ./envoy.pid\`"'
 #ssh -i $SSH_KEY hejiexu@$ENVOY_HOST 'bash -c "cd /home/hejiexu/cpu-affinity-benchmark; kill -9 \`pgrep envoy\`"'
 #kill -SIGINT `pgrep envoy`
-kill -SIGINT `cat ./envoy.pid`
+kill -SIGINT `cat ./envoy.pid` || true
 if [ $PERF_ENABLED = 1 ]; then
     if [ $PERF_TOOL = perf ]; then
         sleep 3

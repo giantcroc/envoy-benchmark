@@ -1,7 +1,7 @@
-SUITE_DIR=./benchmark_connections_balance
-RESULT_BASE_DIR=$SUITE_DIR/results
+SUITE_DIR=./cert_compression
+RESULT_BASE_DIR=$SUITE_DIR/results64
 
-export ENVOY_CONFIG=./envoy-http-with-tls.yaml
+export ENVOY_CONFIG=./envoy-http-tls-qatzstd-cert-compression.yaml
 
 #export LOAD_CPU_SET=44-49
 #export LOAD_CONNECTIONS=1
@@ -12,14 +12,18 @@ export ENVOY_CONFIG=./envoy-http-with-tls.yaml
 #export LOAD_CONCURRENCY=1
 #export LOAD_MAX_REQUEST_PER_CONNECTION=1
 
-
-export LOAD_RPS=1000
+export WRK_BIN=/home/sdp/wrk/wrk
+export ENVOY_BIN=/home/sdp/cert_compression/envoy-static-all-compressor
+export LOAD_CLIENT="wrk"
+export LOAD_CONCURRENCY=8
+export LOAD_CONNECTIONS=64
 export LOAD_DURATION=60
-export LOAD_MAX_REQUEST_PER_CONNECTION=100
-export ENVOY_CPU_SET=13-20
-export ENVOY_CONCURRENCY=8
+export ENVOY_CPU_SET=190 #46
+export BACKEND_CPU_SET=35-42 #35-42
+export LOAD_CPU_SET=24-31 #24-31
+export ENVOY_CONCURRENCY=1
 
-export BASE_DIR=$RESULT_BASE_DIR/1500_rps
+export BASE_DIR=$RESULT_BASE_DIR/qatzstd
 echo "Begin to test $rps rps"
 bash ./benchmark-envoy.sh
 

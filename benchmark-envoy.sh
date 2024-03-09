@@ -4,6 +4,7 @@ set -e
 
 # All the binary path
 source ./env.sh
+bash ./cleanup.sh
 
 # Clean up running data first
 #echo "" > ./running_data.sh
@@ -29,7 +30,7 @@ fi
 # Running envoy
 export ENVOY_CPU_SET=${ENVOY_CPU_SET:=13-16} # 5 cpu pinning, 4 for worker threads, 1 for main thread
 export ENVOY_CONCURRENCY=${ENVOY_CONCURRENCY:=4} # 4 workers
-export ENVOY_CONFIG=${ENVOY_CONFIG:=./envoy-http.yaml}
+export ENVOY_CONFIG=${ENVOY_CONFIG:=./envoy-http-with-tls.yaml}
 
 echo "start envoy on $ENVOY_HOST"
 # ssh -i $SSH_KEY hejiexu@$ENVOY_HOST "cd /home/hejiexu/cpu-affinity-benchmark; BASE_DIR=$BASE_DIR ENVOY_CPU_SET=$ENVOY_CPU_SET ENVOY_CONCURRENCY=$ENVOY_CONCURRENCY ENVOY_CONFIG=$ENVOY_CONFIG bash ./envoy.sh"

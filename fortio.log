@@ -1,0 +1,12 @@
+22:05:26 Fortio 1.34.1 tcp-echo server listening on tcp [::]:8078
+22:05:26 Fortio 1.34.1 udp-echo server listening on udp [::]:8078
+22:05:26 Fortio 1.34.1 grpc 'ping' server listening on tcp [::]:8079
+22:05:26 Fortio 1.34.1 https redirector server listening on tcp [::]:8081
+22:05:26 Fortio 1.34.1 http-echo server listening on tcp [::]:13334
+22:05:26 REST API on /fortio/rest/run, /fortio/rest/status, /fortio/rest/stop
+22:05:26 Data directory is /home/sdp/my-envoy-benchmark
+	 UI started - visit:
+		http://localhost:13334/fortio/
+	 (or any host/ip reachable on this server)
+22:05:26 I fortio_main.go:285> Note: not using dynamic flag watching (use -config to set watch directory)
+22:05:26 I fortio_main.go:293> All fortio 1.34.1 h1:hUaHRNyNi1RhsgjEpw6vgfc6RagMymGIC+UOm19XcaI= go1.18.3 amd64 linux servers started!
